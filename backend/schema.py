@@ -3,7 +3,7 @@ from pydantic import BaseModel, Field
 # ChatRequest 모델 설계
 class ChatRequest(BaseModel):
     message: str = Field(..., description="사용자가 입력한 질문")
-    model: str = Field(default="gemma4:e4b", description="Ollama 모델명")
+    model: str = Field(default="exaone3.5:7.8b", description="Ollama 모델명")
     system_prompt: str = Field(
         default="너는 초보자를 돕는 친절한 AI 강사다.",
         description="모델의 역할을 지정하는 시스템 프롬프트",
