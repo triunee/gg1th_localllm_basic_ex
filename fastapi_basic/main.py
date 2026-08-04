@@ -48,7 +48,7 @@ def get_user(user: UserCreate):
     print("user: ", user)
     user_info = UserResponse(
         name=user.name,
-        avatar_url=user.avatar_url
+        avatar_url=str(user.avatar_url) if user.avatar_url else None
     )
     # Pydantic model 객체를 JSON으로 직렬화해서 응답함.
     return user_info
