@@ -51,6 +51,7 @@ def get_ollama_models():
         OLLAMA_TAGS_URL,
         timeout=30
     )
+    # 응답 실패(4xx/5xx)를 여기서 즉시 예외로 전환
     response.raise_for_status()
 
     data = response.json()
