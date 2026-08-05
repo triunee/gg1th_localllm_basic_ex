@@ -1,5 +1,5 @@
 # 화면 UI 설계 내용
-![alt text](image.png)
+frontend/docs/chat_ui_설계도.jpg
 
 # 데이터 실행 흐름도
 frontend/docs/image-1.png
@@ -23,7 +23,7 @@ use context7
 - 프롬프트 모드 데이터는 src/api/promptModes.js로 분리
 
 # UI 설계 화면
-![alt text](image.png)
+frontend/docs/chat_ui_설계도.jpg
 - docs/image.png 위치의 이미지와 동일한 화면으로 UI를 구성한다.
 - 각 기능이 정상적으로 동작되도록 한다.
 - 첫 번째 화면에서는 챗팅 화면의 텍스트는 없는 상태로 한다.
