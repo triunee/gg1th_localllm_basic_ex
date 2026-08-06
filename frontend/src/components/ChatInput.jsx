@@ -5,7 +5,9 @@ function ChatInput({ onSend, isLoading }) {
   const [input, setInput] = useState('');
 
   function handleKeyDown(e) {
-    if (e.key === 'Enter' && e.shiftKey) {
+    // 한글 등 IME 조합 중의 Enter는 글자 확정용이므로 전송하지 않는다
+    if (e.nativeEvent.isComposing || e.keyCode === 229) return;
+    if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSend();
     }
@@ -23,7 +25,7 @@ function ChatInput({ onSend, isLoading }) {
       <div className="chat-input-wrapper">
         <textarea
           className="chat-input"
-          placeholder="메시지 입력… (Shift+Enter 전송)"
+          placeholder="메시지 입력… (Enter 전송, Shift+Enter 줄바꿈)"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}

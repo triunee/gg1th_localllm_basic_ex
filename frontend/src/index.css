@@ -47,10 +47,21 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 15px;
   line-height: 1.5;
+  overflow: hidden;
+  overscroll-behavior: none;
+  -webkit-text-size-adjust: 100%;
 }
 
 #root {
   width: 100%;
   height: 100vh;
+  height: 100dvh;
   display: flex;
+}
+
+/* 모바일에서 기본 글자 크기 소폭 축소 */
+@media (max-width: 600px) {
+  html, body {
+    font-size: 14px;
+  }
 }

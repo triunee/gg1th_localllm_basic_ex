@@ -1,12 +1,19 @@
 .message-list {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 24px 28px 12px;
   display: flex;
   flex-direction: column;
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: var(--border-mid) transparent;
+  -webkit-overflow-scrolling: touch;
+  /* 초광폭 화면에서 대화가 과도하게 늘어나지 않도록 */
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .message-list::-webkit-scrollbar {
@@ -51,4 +58,23 @@
 @keyframes bubbleIn {
   from { opacity: 0; transform: scale(0.92) translateY(4px); }
   to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .message-list {
+    padding: 18px 16px 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .message-list {
+    padding: 14px 12px 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .message-list { scroll-behavior: auto; }
+  .loading-indicator,
+  .dot { animation: none; }
 }

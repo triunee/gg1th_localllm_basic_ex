@@ -8,7 +8,7 @@ function detectMode(systemPrompt) {
   return match ? match[0] : 'custom';
 }
 
-function SettingsPanel({ models, settings, onSettingsChange }) {
+function SettingsPanel({ models, settings, onSettingsChange, isOpen, onClose }) {
   const tempPct = `${(settings.temperature / 2) * 100}%`;
   const topPPct = `${settings.top_p * 100}%`;
 
@@ -21,8 +21,19 @@ function SettingsPanel({ models, settings, onSettingsChange }) {
   }
 
   return (
-    <aside className="settings-panel">
-      <p className="settings-title">모델 설정</p>
+    <aside className={`settings-panel${isOpen ? ' open' : ''}`}>
+      <div className="settings-title-row">
+        <p className="settings-title">모델 설정</p>
+        <button
+          className="settings-close-button"
+          onClick={onClose}
+          aria-label="설정 닫기"
+        >
+          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" fill="none"/>
+          </svg>
+        </button>
+      </div>
 
       {/* 모델 선택 */}
       <div className="settings-group">

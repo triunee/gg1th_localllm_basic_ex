@@ -4,7 +4,7 @@ import ChatInput from './ChatInput';
 import { sendChat } from '../api/chatApi';
 import './ChatWindow.css';
 
-function ChatWindow({ settings }) {
+function ChatWindow({ settings, onMenuClick }) {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -46,6 +46,15 @@ function ChatWindow({ settings }) {
   return (
     <div className="chat-window">
       <div className="chat-header">
+        <button
+          className="menu-button"
+          onClick={onMenuClick}
+          aria-label="설정 열기"
+        >
+          <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 4.5h14M2 9h14M2 13.5h14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" fill="none"/>
+          </svg>
+        </button>
         <div className="chat-header-info">
           <h1 className="chat-title">Local LLM Chat</h1>
           <p className="chat-subtitle">React → FastAPI → Ollama 기반 로컬 AI 챗 앱</p>

@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-
+import uvicorn
 # ollama_chat 모듈의 call_ollama_chat 함수 로딩
 from ollama_chat import call_ollama_chat, get_ollama_models
 from schema import ChatRequest, ChatResponse
@@ -15,8 +15,8 @@ app = FastAPI(
 # 브라우저는 보안상 서로 다른 출처의 요청을 제한하기 때문에 설정 필요
 app.add_middleware(
     CORSMiddleware,
-    # allow_origins=["*"],    
-    allow_origins=["http://localhost:5173"],
+    allow_origins=["*"],    
+    # allow_origins=["http://localhost:5173"],
     # allow_origins=["http://localhost:5173", "https://example.com"] 
     allow_credentials=True,
     allow_methods=["*"],
@@ -66,3 +66,11 @@ def list_models():
             status_code=500,
             detail=f"모델 목록 조회 중 오류가 발생했습니다: {exc}"
         )
+
+if __name__ == "__main__":
+    uvicorn.run(
+        "main:app",
+        host="127.0.0.1",
+        port=8000,
+        reload=True,
+    )
