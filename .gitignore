@@ -1,5 +1,14 @@
 node_modules/
 
+# ollama_basic - 모델 가중치 (README/스크립트 주석의 wget 명령으로 재다운로드 가능)
+ollama_basic/models/
+
+# ollama_basic - 실습 실행 시 자동 생성되는 결과물 (imgs/img01.jpg, voice/voice1.mp3 같은 입력 샘플은 유지)
+ollama_basic/img_output/
+ollama_basic/voice/input.wav
+ollama_basic/voice/answer.mp3
+ollama_basic/voice/answer.wav
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
