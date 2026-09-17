@@ -2,7 +2,9 @@
 from ollama import chat
 
 IMAGE_PATH = "imgs/img01.jpg"
-MODEL_NAME = "gemma4:e4b"
+#MODEL_NAME = "gemma4:e4b"
+MODEL_NAME = "qwen3.5:9b"
+
 
 response = chat(
     model=MODEL_NAME,

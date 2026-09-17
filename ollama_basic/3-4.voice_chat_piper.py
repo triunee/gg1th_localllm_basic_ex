@@ -76,8 +76,8 @@ import pygame
 # 기본 설정
 # =========================
 
-OLLAMA_MODEL = "gemma4:e4b"
-# OLLAMA_MODEL = "llama3.2:3b"
+#OLLAMA_MODEL = "gemma4:e4b"
+OLLAMA_MODEL = "llama3.2:latest"
 # OLLAMA_MODEL = "llama3.2:1b"
 
 SAMPLE_RATE = 44100
