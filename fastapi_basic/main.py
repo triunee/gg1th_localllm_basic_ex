@@ -2,10 +2,12 @@ from typing import Optional
 
 from fastapi import FastAPI
 from pydantic import BaseModel, HttpUrl
- 
+
+ #fastapi 객체 생성
 app = FastAPI()
 
 # 요청 데이터 모델 정의
+# DTO 데이터 전송 객체
 class UserCreate(BaseModel):
     name: str
     password: str

@@ -1,21 +1,22 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-from db_env  import user, password, host, db_name 
+# from db_env  import user, password, host, db_name
 
 #####################
 # sqlite3 엔진을 정의, DB파일 todo.sqlite3
-# DB_URL = 'sqlite:///todo.sqlite3'
+# (로컬에 Docker/MySQL이 없어 임시로 sqlite 사용. MySQL로 되돌리려면 아래 블록 주석 해제)
+DB_URL = 'sqlite:///todo.sqlite3'
 
-# # 엔진객체 생성
-# engine = create_engine(DB_URL, connect_args={'check_same_thread': False})
+# 엔진객체 생성
+engine = create_engine(DB_URL, connect_args={'check_same_thread': False})
 #####################
 
 #####################
 # mysql 엔진 정의
-DB_URL = f"mysql+pymysql://{user}:{password}@{host}:3306/{db_name}"
-# 엔진객체 생성
-engine = create_engine(DB_URL)
+# DB_URL = f"mysql+pymysql://{user}:{password}@{host}:3306/{db_name}"
+# # 엔진객체 생성
+# engine = create_engine(DB_URL)
 #####################
 
 # DB 연결(세션) 객체 생성

@@ -76,6 +76,9 @@ db.sqlite3-journal
 instance/
 .webassets-cache
 
+# todos-main - 실행 중 데이터가 바뀌는 sqlite DB 파일
+todos-main/todo.sqlite3
+
 # Scrapy stuff:
 .scrapy
 

@@ -33,7 +33,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # localhost:8000/
 @app.get("/")
-async def home(request: Request, db_ss: Session = Depends(get_db)):
+def home(request: Request, db_ss: Session = Depends(get_db)):
     # db 객체 생성, 세션연결하기 <- 의존성 주임으로 처리
     # 테이블 조회
     todos = db_ss.query(models.Todo).order_by(models.Todo.id.desc()).all()
@@ -50,12 +50,12 @@ async def home(request: Request, db_ss: Session = Depends(get_db)):
         )
 
 @app.post("/add")
-async def add(request: Request, task: str = Form(...), 
-              db_ss: Session = Depends(get_db)):
+def add(task: str = Form(...), db_ss: Session = Depends(get_db)):
     # 클라이언트에서 textarea에서 입력 데이터 넘어온것 확인
     print(task)
     # 클라이언트에서 넘어온 task를 Todo 객체로 생성
     todo = models.Todo(task=task)
+     
     # 의존성 주입에서 처리함 Depends(get_db) : 엔진객체생성, 세션연결
     # db 테이블에 task 저장하기
     print(todo)
@@ -68,7 +68,7 @@ async def add(request: Request, task: str = Form(...),
 
 # 문제 : todo 1개 삭제
 @app.post("/delete/{todo_id}")
-async def delete(request: Request, todo_id: int, db_ss: Session = Depends(get_db)):
+def delete(todo_id: int, db_ss: Session = Depends(get_db)):
     todo = db_ss.query(models.Todo).filter(models.Todo.id == todo_id).first()
     print(todo)
     if todo is None:
@@ -80,7 +80,7 @@ async def delete(request: Request, todo_id: int, db_ss: Session = Depends(get_db
 
 # todo 수정을 위한 조회
 @app.get("/edit/{todo_id}")
-async def edit(request: Request, todo_id: int , db_ss: Session = Depends(get_db)):
+def edit(request: Request, todo_id: int , db_ss: Session = Depends(get_db)):
     # 요청 수정 처리
     todo = db_ss.query(models.Todo).filter(models.Todo.id==todo_id).first()
     print(todo.task)
@@ -96,7 +96,7 @@ async def edit(request: Request, todo_id: int , db_ss: Session = Depends(get_db)
 
 # todo 업데이터 처리
 @app.post("/edit/{todo_id}")
-async def update(request: Request, todo_id: int, task: str = Form(...), completed: bool = Form(False), db: Session = Depends(get_db)):
+def update(todo_id: int, task: str = Form(...), completed: bool = Form(False), db: Session = Depends(get_db)):
     todo = db.query(models.Todo).filter(models.Todo.id == todo_id).first()
     todo.task = task
     todo.completed = completed
