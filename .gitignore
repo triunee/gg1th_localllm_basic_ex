@@ -79,6 +79,12 @@ instance/
 # todos-main - 실행 중 데이터가 바뀌는 sqlite DB 파일
 todos-main/todo.sqlite3
 
+# 임시로 git 추적 제외 (작업 중)
+/backend/
+/react_basic/
+/mysql_service/
+/frontend/
+
 # Scrapy stuff:
 .scrapy
 
